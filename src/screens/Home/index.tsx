@@ -42,6 +42,11 @@ export const Home = () => {
         }
     ]);
 
+    function handleCarDetails() {
+        //@ts-ignore
+        navigation.navigate('CarDetails')
+    }
+
     return (
         <>
         <StatusBar 
@@ -63,14 +68,15 @@ export const Home = () => {
                 renderItem={({ item }) => {                    
                     return (
                         <CardCar 
-                            data={cars[0]} 
-                            onPress={() => navigation.navigate('CarDetails')}
+                            data={cars[0]}                             
+                            onPress={() => handleCarDetails()}
                         />
                     )
                 }}
                 contentContainerStyle={{
                     padding: 24
                 }}
+                //@ts-ignore
                 keyExtractor={item => item}
             />
 

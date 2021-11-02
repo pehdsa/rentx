@@ -79,7 +79,8 @@ export const Scheduling = () => {
             <Footer>
                 <Button 
                     title="Confirmar" 
-                    onPress={() => {}}                    
+                    //@ts-ignore
+                    onPress={() => navigation.navigate('SchedulingDetails')}
                 />
             </Footer>
 

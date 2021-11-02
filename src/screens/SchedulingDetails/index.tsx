@@ -159,8 +159,10 @@ export const SchedulingDetails = () => {
             
             <Footer>
                 <Button 
-                    title="Confirmar" 
-                    onPress={() => {}}                    
+                    title="Alugar agora" 
+                    //@ts-ignore
+                    onPress={() => navigation.navigate('SchedulingComplete')}   
+                    color={ theme.colors.success }
                 />
             </Footer>
 

@@ -116,8 +116,9 @@ export const CarDetails = () => {
             
             <Footer>
                 <Button 
-                    title="Confirmar" 
-                    onPress={() => {}}                    
+                    title="Escolher período do aluguel" 
+                    //@ts-ignore
+                    onPress={() => navigation.navigate('Scheduling')}
                 />
             </Footer>
 
