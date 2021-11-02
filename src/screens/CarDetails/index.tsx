@@ -17,13 +17,15 @@ import {
     Period,
     Price,
     About,
-    Accessories
+    Accessories,
+    Footer
 } from './styles';
 
 import { 
     BackButton,
     ImageSlider,
-    Accessory
+    Accessory,
+    Button
 } from '../../components';
 
 import SpeedSvg from '../../assets/speed.svg';
@@ -111,6 +113,13 @@ export const CarDetails = () => {
                 </About>
 
             </Content>
+            
+            <Footer>
+                <Button 
+                    title="Confirmar" 
+                    onPress={() => {}}                    
+                />
+            </Footer>
 
         </Container>
         </>
