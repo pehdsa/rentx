@@ -1,8 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-import theme from '../../styles/theme';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
+import { CarDTO } from '../../dtos/CarDTO';
 
 import {
     Container,
@@ -28,16 +28,25 @@ import {
     Button
 } from '../../components';
 
-import SpeedSvg from '../../assets/speed.svg';
-import AccelerationSvg from '../../assets/acceleration.svg';
-import ForceSvg from '../../assets/force.svg';
-import GasolineSvg from '../../assets/gasoline.svg';
-import ExchangeSvg from '../../assets/exchange.svg';
-import PeopleSvg from '../../assets/people.svg';
+type Params = {
+    car: CarDTO
+}
+
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 export const CarDetails = () => {
 
+    const theme = useTheme();
     const navigation = useNavigation();
+    const route = useRoute();
+    const { car } = route.params as Params
+
+    function handleScheduling() {
+        //@ts-ignore
+        navigation.navigate('Scheduling', {
+            car
+        })
+    }
 
     return (
         <>
@@ -52,9 +61,7 @@ export const CarDetails = () => {
             </Header>
 
             <CarImages>
-                <ImageSlider 
-                    imagesUrl={['https://w7.pngwing.com/pngs/853/38/png-transparent-2017-audi-r8-car-audi-rs5-audi-r8-lms-2016-audi-sedan-car-performance-car.png']}
-                />
+                <ImageSlider imagesUrl={ car.photos } />
             </CarImages>
 
             <Content
@@ -68,57 +75,39 @@ export const CarDetails = () => {
                 <Details>
                     
                     <Description>
-                        <Brand>Lamborguini</Brand>
-                        <Name>Huracan</Name>
+                        <Brand>{ car.brand }</Brand>
+                        <Name>{ car.name }</Name>
                     </Description>
 
                     <Rent>
-                        <Period>Ao dia</Period>
-                        <Price>R$ 580</Price>
+                        <Period>{ car.rent.period }</Period>
+                        <Price>R$ { car.rent.price }</Price>
                     </Rent>
 
                 </Details>
 
                 <Accessories>
-                    
-                    <Accessory 
-                        icon={ SpeedSvg } 
-                        name="380Km/h" 
-                    />
-                    <Accessory 
-                        icon={ AccelerationSvg } 
-                        name="3.2s" 
-                    />
-                    <Accessory 
-                        icon={ ForceSvg } 
-                        name="800 HP" 
-                    />
-                    <Accessory 
-                        icon={ GasolineSvg } 
-                        name="Gasolina" 
-                    />
-                    <Accessory 
-                        icon={ ExchangeSvg } 
-                        name="Auto" 
-                    />
-                    <Accessory 
-                        icon={ PeopleSvg } 
-                        name="2 pessoas" 
-                    />
+
+                    { car.accessories.map(accessory => {
+                        return (
+                            <Accessory 
+                                key={ accessory.type }
+                                name={ accessory.name } 
+                                icon={ getAccessoryIcon(accessory.type) } 
+                            />
+                        )
+                    }) }
 
                 </Accessories>
 
-                <About>
-                    Este é automóvel desportivo. Surgiu do lendário touro de lide indultado na praça Real Maestranza de Sevilla. É um belíssimo carro para quem gosta de acelerar.
-                </About>
+                <About>{ car.about }</About>
 
             </Content>
             
             <Footer>
                 <Button 
-                    title="Escolher período do aluguel" 
-                    //@ts-ignore
-                    onPress={() => navigation.navigate('Scheduling')}
+                    title="Escolher período do aluguel"                     
+                    onPress={ handleScheduling }
                 />
             </Footer>
 

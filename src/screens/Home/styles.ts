@@ -1,6 +1,9 @@
 import styled from 'styled-components/native';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { FlatList } from 'react-native';
+import { getStatusBarHeight, getBottomSpace } from 'react-native-iphone-x-helper';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { CarDTO } from '../../dtos/CarDTO';
+import { RectButton } from 'react-native-gesture-handler';
 
 
 export const Container = styled.View`
@@ -34,6 +37,20 @@ export const TotalCars = styled.Text`
     color: ${({ theme }) => theme.colors.text};
 `;
 
-export const CarList = styled.FlatList`
-    
+
+export const CarList = styled(FlatList as new () => FlatList<CarDTO>)``;
+
+export const MyCarsButton = styled(RectButton)`
+    width: 60px;
+    height: 60px;
+    background-color: ${({ theme }) => theme.colors.main};
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 30px;
+
+    margin-right: 22px;
+    margin-bottom: ${ getBottomSpace() + 13 }px;
 `;

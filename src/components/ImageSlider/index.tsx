@@ -23,7 +23,9 @@ export const ImageSlider = ({ imagesUrl }: Props) => {
                 <ImageIndex active={ false } />
             </ImageIndexes>
 
-            <CarImageWrapper>
+            <CarImageWrapper
+                
+            >
 
                 { imagesUrl.map((image, index) => {
                     return (
