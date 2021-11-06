@@ -6,6 +6,7 @@ import { Button } from './Button';
 import { Calendar } from './Calendar';
 import { ConfirmButton } from './ConfirmButton';
 import { Load } from './Load';
+import { LoadAnimation } from './LoadAnimation';
 
 
 export {
@@ -16,5 +17,6 @@ export {
     Button,
     Calendar,
     ConfirmButton,
-    Load
+    Load,
+    LoadAnimation
 }

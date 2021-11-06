@@ -23,21 +23,10 @@ export const Header = styled.View`
     margin-left: 24px;
 `;
 
-
-export const CarImages = styled.View`
-    padding-top: ${ getStatusBarHeight() ? getStatusBarHeight() + 32 : 32 }px;
-`;
-
-export const Content = styled.ScrollView`
-    flex-grow: 1;
-`
-
 export const Details = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-
-    margin-top: 38px;
 `
 
 export const Description = styled.View``

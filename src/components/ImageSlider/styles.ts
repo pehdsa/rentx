@@ -26,7 +26,7 @@ export const ImageIndex = styled.View<ImageIndexProps>`
 
 export const CarImageWrapper = styled.View`
     width: ${ Dimensions.get('window').width }px;
-    height: 132px;
+    height: 180px;
 
     align-items: center;
     justify-content: center;
