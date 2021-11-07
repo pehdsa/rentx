@@ -11,12 +11,17 @@ export const Container = styled(RectButton)<ColorProps>`
     padding: 19px;
     align-items: center;
     justify-content: center;
+    height: 60px;
 
     background-color: ${({ theme, color }) => color ? color : theme.colors.main };
 `;
 
-export const Title = styled.Text`
+type TitleProps = {
+    light: boolean
+}
+
+export const Title = styled.Text<TitleProps>`
     font-family: ${({ theme }) => theme.fonts.primary_500};
-    color: ${({ theme }) => theme.colors.shape};
-    font-size: ${RFValue(15)}px;    
+    color: ${({ light, theme }) => light ? theme.colors.title : theme.colors.shape};
+    font-size: ${RFValue(14)}px;    
 `;

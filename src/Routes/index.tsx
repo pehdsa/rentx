@@ -13,15 +13,27 @@ import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { SchedulingComplete } from '../screens/SchedulingComplete';
 import { MyCars } from '../screens/MyCars';
 
+import { Signin } from '../screens/Signin';
+import { FirstStep } from '../screens/SignUp/FirstStep';
+
+
 export function Routes() {
     return (
         <NavigationContainer>
             <Navigator 
-                initialRouteName="Splash"
+                initialRouteName="Signin"
                 screenOptions={{ headerShown: false }}
             >
                 
                 <Screen name="Splash" component={ Splash } />
+                <Screen 
+                    name="Signin" 
+                    component={ Signin } 
+                    options={{
+                        gestureEnabled: false
+                    }}
+                /> 
+                <Screen name="FirstStep" component={ FirstStep } />                
                 <Screen 
                     name="Home" 
                     component={ Home } 

@@ -8,6 +8,8 @@ import { ConfirmButton } from './ConfirmButton';
 import { Load } from './Load';
 import { LoadAnimation } from './LoadAnimation';
 
+import { Input } from './Input';
+
 
 export {
     CardCar,
@@ -18,5 +20,6 @@ export {
     Calendar,
     ConfirmButton,
     Load,
-    LoadAnimation
+    LoadAnimation,
+    Input
 }
