@@ -60,7 +60,7 @@ export const Splash = () => {
 
     function startApp() {
         //@ts-ignore
-        navigation.navigate('Home');
+        navigation.navigate('Signin');
     }
 
     useEffect(() => {

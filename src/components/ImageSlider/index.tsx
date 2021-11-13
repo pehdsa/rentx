@@ -9,8 +9,13 @@ import {
     CarImage,
 } from './styles';
 
+import { Bullet } from '../Bullet'
+
 type Props = {
-    imagesUrl: string[]
+    imagesUrl: Array<{
+        id: string,
+        photo: string
+    }>
 }
 
 type ChangeImageProps = {
@@ -31,9 +36,9 @@ export const ImageSlider = ({ imagesUrl }: Props) => {
         <Container>
             
             <ImageIndexes>
-                { imagesUrl.map((_, index) => (
-                    <ImageIndex 
-                        key={String(index)}
+                { imagesUrl.map((item, index) => (
+                    <Bullet 
+                        key={String(item.id)}
                         active={ imageIndex === index } 
                     />
                 )) }
@@ -41,11 +46,11 @@ export const ImageSlider = ({ imagesUrl }: Props) => {
 
             <FlatList 
                 data={ imagesUrl }
-                keyExtractor={ key => key }
+                keyExtractor={ item => item.id }
                 renderItem={({ item }) => (
                     <CarImageWrapper>
                         <CarImage                             
-                            source={{ uri: item }} 
+                            source={{ uri: item.photo }} 
                             resizeMode="contain"
                         />
                     </CarImageWrapper>

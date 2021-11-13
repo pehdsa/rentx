@@ -88,7 +88,7 @@ export const SchedulingDetails = () => {
         })
         .then(() => {
             //@ts-ignore
-            navigation.navigate('SchedulingComplete')
+            navigation.navigate('Confirmation', { title: 'Carro alugado!', message: `Agora você só precisa ir${'\n'}até a concessionária da RENTX`, nextScreenRoute: 'Home' })
         })
         .catch(() => {
             Alert.alert('Erro', 'Não possível finalizar o agendamento.')
@@ -101,7 +101,7 @@ export const SchedulingDetails = () => {
             start: format(getPlatformDate(new Date(dates[0])), 'dd/MM/yyyy'),
             end: format(getPlatformDate(new Date(dates[dates.length - 1])), 'dd/MM/yyyy')
         });
-        setTotalPrice(car.rent.price * (dates.length - 1));
+        setTotalPrice(car.price * (dates.length - 1));
         setDaysPeriod(dates.length - 1);
     },[]);
 
@@ -137,8 +137,8 @@ export const SchedulingDetails = () => {
                     </Description>
 
                     <Rent>
-                        <Period>{ car.rent.period }</Period>
-                        <Price>R$ { car.rent.price }</Price>
+                        <Period>{ car.period }</Period>
+                        <Price>R$ { car.price }</Price>
                     </Rent>
 
                 </Details>
@@ -188,7 +188,7 @@ export const SchedulingDetails = () => {
                 <RentalPrice>
                     <RentalPriceLabel>TOTAL</RentalPriceLabel>
                     <RentalPriceDetails>
-                        <RentalPriceQuota>R$ { car.rent.price } x{ daysPeriod }</RentalPriceQuota>
+                        <RentalPriceQuota>R$ { car.price } x{ daysPeriod }</RentalPriceQuota>
                         <RentalPriceTotal>R$ { totalPrice }</RentalPriceTotal>
                     </RentalPriceDetails>
                 </RentalPrice>          

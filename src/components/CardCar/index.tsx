@@ -35,8 +35,8 @@ export const CardCar = ({ data, ...rest }: CardCarProps) => {
 
                 <About>
                     <Rent>
-                        <Period>{ data.rent.period }</Period>
-                        <Price>{ `R$ ${data.rent.price}` }</Price>
+                        <Period>{ data.period }</Period>
+                        <Price>{ `R$ ${data.price}` }</Price>
                     </Rent>
                     <Type>
                         <Motoricon 

@@ -84,7 +84,7 @@ export const Footer = styled.View`
     width: 100%;
     background-color: ${({ theme }) => theme.colors.background_secondary};
     padding: 24px;
-    padding-bottom: ${getBottomSpace() + 24}px;
+    padding-bottom: 24px;
 `;
 
 export const RentalPeriod = styled.View`

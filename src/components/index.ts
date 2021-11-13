@@ -9,6 +9,7 @@ import { Load } from './Load';
 import { LoadAnimation } from './LoadAnimation';
 
 import { Input } from './Input';
+import { Bullet } from './Bullet';
 
 
 export {
@@ -21,5 +22,6 @@ export {
     ConfirmButton,
     Load,
     LoadAnimation,
-    Input
+    Input,
+    Bullet
 }

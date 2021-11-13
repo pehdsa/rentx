@@ -3,6 +3,7 @@ import { View, StatusBar, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedba
 import { useTheme } from 'styled-components';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/core';
+import { useAuth } from '../../hooks/auth';
 
 import {
     Container,
@@ -22,10 +23,14 @@ export const Signin = () => {
     const theme = useTheme();
     const navigation = useNavigation();
 
+    const { signIn } = useAuth();
+
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ loading, setLoading ] = useState(false);
 
     async function handleSignIn() {
+        setLoading(true);
         try {
             const schema = Yup.object().shape({
                 password: Yup.string().required('Senha é obrigatória'),
@@ -34,9 +39,10 @@ export const Signin = () => {
     
             await schema.validate({ email, password });
 
-            // Fazer Login
+            const result = await signIn({ email, password });
             
         } catch(error) {
+            setLoading(false);
             if (error instanceof Yup.ValidationError) {
                 Alert.alert('Oops', error.message)
             } else {
@@ -53,7 +59,7 @@ export const Signin = () => {
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <KeyboardAvoidingView behavior="padding" style={{ flex: 1, justifyContent: 'center' }}>
+            <KeyboardAvoidingView behavior="padding" style={{ flex: 1, justifyContent: 'center', backgroundColor: theme.colors.background_primary }}>
                 <Container>
                     <StatusBar 
                         barStyle="dark-content"
@@ -97,7 +103,7 @@ export const Signin = () => {
                             title="Login"
                             onPress={ handleSignIn }
                             enabled={ true }
-                            loading={ false }
+                            loading={ loading }
                         />
                         <View style={{ height: 8 }} />
                         <Button
